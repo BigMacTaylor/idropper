@@ -1,5 +1,5 @@
 # iDropper
-A simple screen color picker for Sway/Wayland
+A simple color picker for Sway / Wayland.
 
 ![idropper](https://github.com/BigMacTaylor/idropper/blob/main/screenshots/idropper.png "iDropper")
 
@@ -12,3 +12,7 @@ Download the `.deb` file from the [releases page](https://github.com/BigMacTaylo
 ```bash
 sudo apt install ./idropper_*.deb
 ```
+
+## Requirements
+- slurp (to get pixel position)
+- grim (to take screenshot of pixel)
