@@ -1,7 +1,7 @@
 # Package
 
-version       = "1.0.0"
-author        = "Mac Taylor"
+version       = "1.0.1"
+author        = "BigMacTaylor"
 description   = "A color picker for wayland"
 license       = "GPL-3.0-only"
 srcDir        = "src"
@@ -17,4 +17,4 @@ requires "pnm"
 foreignDeps = @["libgtk-3-0", "slurp", "grim"]
 
 task release, "Build release":
-    exec "nim c -d:release -d:strip --opt:size -o:bin/idropper src/idropper.nim"
+    exec "nim c -d:release -d:strip --opt:size --threads:off -o:bin/idropper src/idropper.nim"

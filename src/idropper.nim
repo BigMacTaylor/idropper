@@ -1,7 +1,7 @@
 # ========================================================================================
 #
 #                                   iDropper
-#                          version 1.0.0 by Mac_Taylor
+#                          version 1.0.1 by Mac_Taylor
 #
 # ========================================================================================
 
@@ -85,6 +85,15 @@ proc getPixelColor(): string =
 proc onRowClick(button: Button, color: string) =
   let clipboard = getDefaultClipboard(getDefaultDisplay())
   clipboard.setText(color, -1)
+
+  # Create Notification
+  let notification = newNotification("Copied to clipboard.")
+  notification.setBody(color)
+
+  # Get app and send notification
+  let win = cast[gtk.Window](button.getToplevel())
+  let app = win.get_application()
+  app.sendNotification("color", notification)
 
 proc onRemoveBtn(button: Button, list: ListBox) =
   # Get ListBoxRow from button
@@ -202,8 +211,6 @@ proc appActivate(app: Application) =
   let scrolledWindow = newScrolledWindow()
   scrolledWindow.hexpand = true
   scrolledWindow.vexpand = false
-  #scrolledWindow.minContentHeight = 280
-  #scrolledWindow.minContentWidth = 360
 
   let listBox = newListBox()
   listBox.marginStart = 60
